@@ -47,20 +47,14 @@ export default {
       clientsClaim: true,      // Immediately take control of all clients
       runtimeCaching: [
         {
-          urlPattern: 'https://fonts.googleapis.com/.*',
-          handler: 'CacheFirst',
+          urlPattern: 'https://api.example.com/.*',
+          handler: 'NetworkFirst',
           method: 'GET',
-          strategyOptions: {
-            cacheableResponse: { statuses: [0, 200] },
-          },
         },
         {
-          urlPattern: 'https://cdnjs.cloudflare.com/.*',
-          handler: 'CacheFirst',
+          urlPattern: '/.*',
+          handler: 'NetworkFirst',
           method: 'GET',
-          strategyOptions: {
-            cacheableResponse: { statuses: [0, 200] },
-          },
         },
         // Add more runtime caching strategies here as needed
       ],
