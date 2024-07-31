@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h1>Hello Developer! Yikon 😂😂😂😂😂</h1>
+  <h1>Hello 😂😂😂😂😂</h1>
   <button @click="handleGreeting">Reply!</button>
 </div>
 </template>
@@ -19,7 +19,7 @@ export default {
       if (sw) {
         sw.addEventListener('controllerchange', () => {
           // Notify the user about the update
-          alert('A new version of the app is available. Please refresh the page to update.');
+          confirm('A new version of the app is available. Please refresh the page to update.');
         });
       }
     }
