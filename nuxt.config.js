@@ -42,6 +42,9 @@ export default {
       ],
     },
     workbox: {
+      // Set the service worker update strategy
+      skipWaiting: true,       // Automatically activate the new service worker
+      clientsClaim: true,      // Immediately take control of all clients
       runtimeCaching: [
         {
           urlPattern: 'https://fonts.googleapis.com/.*',

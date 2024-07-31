@@ -12,6 +12,17 @@ export default {
     handleGreeting() {
       alert('hi, bro')
     }
-  }
+  },
+  mounted() {
+    if (process.client) {
+      const sw = navigator.serviceWorker;
+      if (sw) {
+        sw.addEventListener('controllerchange', () => {
+          // Notify the user about the update
+          alert('A new version of the app is available. Please refresh the page to update.');
+        });
+      }
+    }
+  },
 }
 </script>
