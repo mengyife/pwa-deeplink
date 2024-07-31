@@ -15,7 +15,8 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'manifest', href: '/manifest.json' }  // Add this line
     ]
   },
 
@@ -44,14 +45,41 @@ export default {
   },
   pwa: {
     manifest: {
-      name: 'My PWA Project',
-      short_name: 'MyPWA',
+      name: 'My Awesome App',
+      short_name: 'AwesomeApp',
+      description: 'The best app in the world',
       lang: 'en',
+      display: 'standalone',
+      background_color: '#ffffff',
+      theme_color: '#4DBA87',
+      icons: [
+        {
+          src: '/icon-512x512.png',
+          sizes: '512x512',
+          type: 'image/png'
+        }
+      ]
     },
-    // workbox: {
-    //   importScripts: [
-    //     'sw.js'
-    //   ],
-    // },
+    workbox: {
+      // Enable offline support
+      offline: true,
+      // Cache assets
+      runtimeCaching: [
+        {
+          urlPattern: 'https://my-api/.*',
+          handler: 'networkFirst',
+          method: 'GET',
+          strategyOptions: {
+            cacheName: 'my-api-cache',
+            cacheExpiration: {
+              maxEntries: 10,
+              maxAgeSeconds: 300
+            }
+          }
+        }
+      ]
+    }
+    // other PWA options
   },
+  
 }
